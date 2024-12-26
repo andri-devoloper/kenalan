@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #2c3e50;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Hujan (Tetesan air) */
+.raindrop {
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  animation: fall linear infinite;
+}
+
+/* Animasi untuk tetesan air hujan */
+@keyframes fall {
+  to {
+    transform: translateY(100vh); /* Tetesan jatuh ke bawah */
+  }
+}
+
+/* Membuat banyak tetesan hujan */
+.raindrop:nth-child(odd) {
+  animation-duration: 4s; /* Durasi lebih lama */
+  animation-delay: 1s; /* Waktu mulai yang lebih renggang */
+}
+
+.raindrop:nth-child(even) {
+  animation-duration: 5s; /* Durasi lebih lama */
+  animation-delay: 2s; /* Waktu mulai yang lebih renggang */
+}

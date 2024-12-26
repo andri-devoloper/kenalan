@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasil</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="https://andev.my.id/icons/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div id="raindrops"></div>
+    <div class="h-[100vh] flex justify-center items-center">
+      <div
+        class="container z-10 mx-auto px-4 flex flex-col gap-4 bg-green-500 py-3 px-4 rounded-md text-gray-800"
+      >
+        <div id="posisia" class="relative">
+          <h1 class="text-lg font-bold text-center" id="nama"></h1>
+          <p id="hasil" class="text-center mt-4"></p>
+          <img
+            class="absolute -top-[4rem] rotate-45 rounded-full"
+            width="100"
+            src="/gif1.gif"
+            alt="gif"
+          />
+        </div>
+        <img id="gifImage" src="" alt="" />
+      </div>
+    </div>
+    <script src="/tailwind.3.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/script.js"></script>
+    <script>
+      $(document).ready(function () {
+        const namaAnak = localStorage.getItem("namaAnak");
+        const namaAyah = localStorage.getItem("namaAyah");
+        const opsi = localStorage.getItem("opsi");
+
+        $("#nama").text(`Selamat, ${namaAnak}!!`);
+
+        if (namaAnak && namaAyah && opsi) {
+          let hasilOpsi;
+
+          if (opsi === "option1") {
+            hasilOpsi = `Aisyah, senyumanmu seindah mentari pagi yang menenangkan hati. Setiap kali kulihat dirimu, debar jantungku bagai irama lagu cinta. Pasti ayahmu, ${namaAyah}, telah memberimu pesona yang luar biasa.`;
+          } else if (opsi === "option2") {
+            hasilOpsi = `Aisyah, kamu bikin hari-hariku jadi berwarna. Kehadiranmu seperti secangkir teh hangat di pagi hari. Aku yakin, kamu mewarisi kebaikan hati ayahmu, ${namaAyah}.`;
+          } else if (opsi === "option3") {
+            hasilOpsi = `Aisyah, matamu bagai bintang yang bersinar di malam gelap. Hatiku terpesona oleh keindahanmu. Pasti ayahmu, ${namaAyah}, sangat bangga memiliki putri secantik dirimu.`;
+          }
+
+          $("#hasil").text(hasilOpsi);
+          setTimeout(function () {
+            $("#posisia").hide();
+            $("#gifImage").attr("src", "/gif2.gif");
+          }, 10000);
+        } else {
+          $("#hasil").text(
+            "Data tidak ditemukan, kembali ke halaman sebelumnya."
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

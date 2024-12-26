@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Input</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="https://andev.my.id/icons/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div id="raindrops"></div>
+    <div class="h-[100vh] flex justify-center items-center">
+      <div
+        class="container mx-auto px-4 flex flex-col z-10 gap-4 bg-green-500 py-3 px-4 rounded-md"
+      >
+        <form id="dataForm">
+          <div class="px-2 py-3">
+            <div class="mt-4">
+              <input
+                type="text"
+                id="namaAnak"
+                placeholder="Masukan nama anda.."
+                required
+                class="block w-full rounded-md py-1.5 px-2 focus:outline-none text-gray-800 placeholder:text-gray-800"
+              />
+            </div>
+            <div class="mt-4">
+              <input
+                type="text"
+                id="namaAyah"
+                placeholder="Masukan nama ayah.."
+                required
+                class="block w-full text-gray-800 rounded-md py-1.5 px-2 focus:outline-none placeholder:text-gray-800"
+              />
+            </div>
+            <div class="mt-4">
+              <select
+                id="options"
+                required
+                class="block w-full rounded-md py-1.5 px-2 focus:outline-none text-gray-800 bg-white appearance-none border border-gray-300"
+              >
+                <option value="" disabled selected>Pilih opsi...</option>
+                <option value="option1">Opsi 1</option>
+                <option value="option2">Opsi 2</option>
+                <option value="option3">Opsi 3</option>
+              </select>
+            </div>
+            <div class="mt-6">
+              <button
+                type="submit"
+                class="px-4 py-2 w-full bg-blue-400 rounded-md text-gray-800 font-medium"
+              >
+                Lanjutkan
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="/tailwind.3.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/script.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#dataForm").on("submit", function (e) {
+          e.preventDefault(); // Mencegah submit default
+
+          const namaAnak = $("#namaAnak").val();
+          const namaAyah = $("#namaAyah").val();
+          const opsi = $("#options").val(); // Mendapatkan nilai opsi yang dipilih
+
+          if (namaAnak && namaAyah && opsi) {
+            // Simpan data ke localStorage
+            localStorage.setItem("namaAnak", namaAnak);
+            localStorage.setItem("namaAyah", namaAyah);
+            localStorage.setItem("opsi", opsi); // Simpan opsi yang dipilih
+
+            // Redirect ke halaman hasil
+            window.location.href = "hasil.html";
+          } else {
+            alert("Harap lengkapi semua field!");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
